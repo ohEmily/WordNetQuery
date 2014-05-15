@@ -65,9 +65,9 @@ public class WordList
 	}
 	
 	/**
-	 * For testing purposes: return the top word.
+	 * For testing purposes: return a word.
 	 */
-	public String getTopWord()
+	public String getAWord()
 	{
 		return words.get(0).getWord();
 	}

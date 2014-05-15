@@ -1,7 +1,9 @@
 package enp2111.edu.columbia;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
 import au.com.bytecode.opencsv.CSVReader;
 
 /**
@@ -22,10 +24,14 @@ public class Main
 			e.printStackTrace();
 		}
 		
-		System.out.println(list.toString());
+		// for testing, print the whole list:
+//		System.out.println(list.toString());
 		
-		QuerySender qs = new QuerySender("C:\\Users\\Emily Pakulski\\Documents\\Programs\\WordNet\\dict");
-		System.out.println(qs.getSynonyms(list.getTopWord()));
+		// create new QuerySender using the dictionary files stored locally
+		String filePath = new File("").getAbsolutePath().concat("\\dict");
+		QuerySender qs = new QuerySender(filePath);
+		
+		System.out.println(qs.getSynonyms(list.getAWord()));
 	}
 	
 	/**
