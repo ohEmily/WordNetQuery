@@ -24,7 +24,7 @@ public class Main
 		
 		System.out.println(list.toString());
 		
-		QuerySender qs = new QuerySender();
+		QuerySender qs = new QuerySender("C:\\Users\\Emily Pakulski\\Documents\\Programs\\WordNet\\dict");
 		System.out.println(qs.getSynonyms(list.getTopWord()));
 	}
 	

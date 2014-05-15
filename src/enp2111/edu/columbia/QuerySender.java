@@ -10,14 +10,13 @@ import edu.smu.tspell.wordnet.WordNetDatabase;
  * Set up using JAWS instructions: http://lyle.smu.edu/~tspell/jaws/index.html
  */
 
-
 public class QuerySender 
 {
-	WordNetDatabase database;
+	private WordNetDatabase database;
 	
-	public QuerySender()
+	public QuerySender(String databaseLocation)
 	{
-		System.setProperty("wordnet.database.dir", "C:\\Users\\Emily Pakulski\\Documents\\Programs\\WordNet\\dict");
+		System.setProperty("wordnet.database.dir", databaseLocation);
 		database = WordNetDatabase.getFileInstance();
 	}
 	
