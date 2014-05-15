@@ -10,8 +10,7 @@ import java.util.ArrayList;
 public class WordList
 {
 	/**
-	 * Class to store the definition pairs in. C
-	 * @param <String>
+	 * Nested class to store the definition pairs in. 
 	 */
 	private class WordTuple
 	{
@@ -28,7 +27,7 @@ public class WordList
 		public String getSentence() { return sentence; }
 	}
 	
-	// instance variable
+	// instance variables
 	private ArrayList<WordTuple> words;
 	
 	/**
@@ -65,11 +64,11 @@ public class WordList
 		return sb.toString();
 	}
 	
-//	public String getSentence(String query)
-//	{
-//		for (WordTuple each : words)
-//			if (each.getWord().equals(query))
-//				return each.getSentence();
-//		
-//	}
+	/**
+	 * For testing purposes: return the top word.
+	 */
+	public String getTopWord()
+	{
+		return words.get(0).getWord();
+	}
 }

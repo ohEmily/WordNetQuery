@@ -1,9 +1,12 @@
 package enp2111.edu.columbia;
 
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Scanner;
+import au.com.bytecode.opencsv.CSVReader;
+
+/**
+ * Reads in a wordlist from the data.csv file
+ */
 
 public class Main 
 {
@@ -20,24 +23,32 @@ public class Main
 		}
 		
 		System.out.println(list.toString());
+		
+		QuerySender qs = new QuerySender();
+		System.out.println(qs.getSynonyms(list.getTopWord()));
 	}
 	
 	/**
 	 * Reads word-sentence pairs from the file into the list, where sentence 
 	 * is column A, word is column B.
 	 */
-	private static void readInWords(String fileName, WordList list) throws IOException
+	private static void readInWords(String fileName, WordList list) 
+			throws IOException
 	{
-		Path filePath = Paths.get(fileName);
-		Scanner scanner = new Scanner(filePath);
-		scanner.useDelimiter("\t");
+		CSVReader reader = new CSVReader(new FileReader(fileName), ',');
+		String[] nextLine = new String[2];  // nextLine[] is an array of values from the line
 		
-		String sentence = scanner.next();
-		String word = scanner.next();
+		// skip the first row, the column headers
+		reader.readNext();
 		
-		list.addTuple(word, sentence);
-		
-		scanner.close();
-		
+	    while ((nextLine = reader.readNext()) != null) 
+	    {
+	        String word = nextLine[1];
+	        String sentence = nextLine[0];
+	        
+	        list.addTuple(word, sentence);    
+	    }
+
+	    reader.close();
 	}
 }
